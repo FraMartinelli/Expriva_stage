@@ -1,0 +1,9 @@
+/* Aggiungi questo stile al tuo file styles.css o styles.scss */
+
+.container {
+    height: 1000px;
+    background-position: center;
+    background-image: url('C:\\Program Files\\angularProj\\bigliettiAereo\\src\\assets\\images\\background.jpg');
+    margin-left: auto;
+    margin-right: auto;
+}

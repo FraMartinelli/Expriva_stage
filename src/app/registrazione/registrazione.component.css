@@ -1,0 +1,30 @@
+/* registrazione.component.css */
+
+.registration-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 8px;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

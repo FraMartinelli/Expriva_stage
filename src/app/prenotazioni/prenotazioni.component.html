@@ -1,0 +1,80 @@
+<div>
+    <h2>Gestione Prenotazioni</h2>
+
+    <!-- Modulo per l'inserimento/modifica della prenotazione -->
+    <div *ngIf="showForm">
+        <h3>{{ selectedReservation.idPrenotazione ? 'Modifica Prenotazione' : 'Inserisci Nuova Prenotazione' }}</h3>
+        <form (submit)="submitForm()">
+            <mat-form-field>
+                <label for="idPrenotazione">ID Prenotazione:</label>
+                <input matInput type="number" id="idPrenotazione" [(ngModel)]="selectedReservation.idPrenotazione" name="idPrenotazione" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label for="idVolo">ID Volo:</label>
+                <input matInput type="text" id="idVolo" [(ngModel)]="selectedReservation.idVolo" name="idVolo" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label for="idCliente">ID Cliente:</label>
+                <input matInput type="number" id="idCliente" [(ngModel)]="selectedReservation.idCliente" name="idCliente" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label for="dataPrenotazione">Data Prenotazione:</label>
+                <input matInput type="date" id="dataPrenotazione" [(ngModel)]="selectedReservation.dataPrenotazione" name="dataPrenotazione" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label for="dataViaggio">Data Viaggio:</label>
+                <input matInput type="date" id="dataViaggio" [(ngModel)]="selectedReservation.dataViaggio" name="dataViaggio" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label for="costoFatturato">Costo Fatturato:</label>
+                <input matInput type="number" id="costoFatturato" [(ngModel)]="selectedReservation.costoFatturato" name="costoFatturato" required>
+            </mat-form-field>
+            <button mat-raised-button type="submit">{{ selectedReservation.idPrenotazione ? 'Modifica' : 'Inserisci' }}</button>
+            <button mat-raised-button type="button" (click)="clearForm()">Annulla</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <!-- Tabella delle prenotazioni -->
+    <div>
+        <h3>Lista delle Prenotazioni</h3>
+        <button (click)="showForm = !showForm">Inserisci Prenotazione</button>
+        <table>
+            <caption>Tabella delle prenotazioni dei voli</caption>
+            <thead>
+                <tr>
+                    <th>ID Prenotazione</th>
+                    <th>ID Volo</th>
+                    <th>ID Cliente</th>
+                    <th>Data Prenotazione</th>
+                    <th>Data Viaggio</th>
+                    <th>Costo Fatturato</th>
+                    <th>Nome Giorno</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reservation of reservations">
+                    <td>{{ reservation.idPrenotazione }}</td>
+                    <td>{{ reservation.idVolo }}</td>
+                    <td>{{ reservation.idCliente }}</td>
+                    <td>{{ reservation.dataPrenotazione | date: 'yyyy-MM-dd' }}</td>
+                    <td>{{ reservation.dataViaggio | date: 'yyyy-MM-dd' }}</td>
+                    <td>{{ reservation.costoFatturato }}</td>
+                    <td>{{ reservation.nomeGiorno }}</td>
+
+                    <td>
+                        <button (click)="editReservation(reservation)">Modifica</button>
+                        <button (click)="deleteReservation(reservation.idPrenotazione)">Elimina</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
